@@ -1,0 +1,52 @@
+/Design doc conventions
+/All objects used by another object must be defined beforehand unless they're primitives or there is a circular relationship
+/Objects are demarked in uppercase in their definition and in lowercase (except for first letter) in all other instances
+/Primitives are fully lowercase and need not be defined
+/Keywords:
+/Is is used for hierarchy
+/Has is ownership
+/Can is functionnality and is followed by verb and complement
+/Can Use allows the object to use the functionnalities of another object
+/As can be used to describe the role of an owned object
+
+ZONE
+	Has coordinates
+	Has size
+ENTITY
+	Has Zone
+	Has affiliation
+	Has life
+	Can die
+CHARACTER
+	Is Entity
+	Has speed
+	Has Entity As target
+	Can move Itself
+	Can damage Entity
+	Can repair Entity
+BUILDING
+	Is Entity
+	Has Zone
+	Can create Characters
+MAP
+	Has Zones As obstacles or buildings
+	Can create Buildings
+PATH
+	Has coordinates
+CONTROLLER
+	Has Map
+	Can Use Maps
+	Can Use Characters
+	Can Use Buildings
+	Can create Paths
+PLAYER
+	Has Buildings
+	Has Characters
+	Can Use Controller As high-level command center
+AI
+	Has Player
+	Can Use Player
+UI
+	Has Player
+	Can Use Player
+
