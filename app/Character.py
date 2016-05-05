@@ -1,15 +1,13 @@
+from app.Entity import Entity
 
-
-class Character(object):
-    def __init__(self, position=(0, 0), speed=(0,0), strength=0):
-        self.position = position
-        self.speed = speed
+class Character(Entity):
+    def __init__(self, strength, life, affiliation, Zone):
+        super().__init__(life, affiliation, Zone)
         self.strength = strength
+        self.speed = (0, 0)
 
     def move(self):
-        x, y = self.position
-        dx, dy = self.speed
-        self.position = (x + dx, y + dy)
+        self.Zone.move_ip(self.speed)
 
     def attack(self, Entity):
         Entity.life -= self.strength

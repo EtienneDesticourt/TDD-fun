@@ -1,11 +1,14 @@
 from app.Character import Character
+from app.Entity import Entity
+from pygame import Rect as Zone
 
-class Building(object):
-    def __init__(self, position=(0,0)):
+class Building(Entity):
+    def __init__(self, life, affiliation, Zone):
+        super().__init__(life, affiliation, Zone)
         self.CharacterModels = {}
-        self.position = position
 
     def createCharacter(self, modelName):
         Model = self.CharacterModels[modelName]
-        Char = Character(position = self.position, strength = Model.strength)
+        CharZone = Zone((self.Zone.x, self.Zone.y), (Model.Zone.width, Model.Zone.height))
+        Char = Character(strength = Model.strength, life = Model.life, affiliation = Model.affiliation, Zone = CharZone)
         return Char
