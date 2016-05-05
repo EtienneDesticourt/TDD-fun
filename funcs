@@ -6,27 +6,28 @@
 /Is is used for hierarchy
 /Has is ownership
 /Can is functionnality and is followed by verb and complement
-/Can Use allows the object to use the functionnalities of another object
+/Can Use allows the object to use the functionnalities of another object with a wrapper
 /As can be used to describe the role of an owned object
 
 ZONE
 	Has coordinates
 	Has size
+	Can collide with a Zone
 ENTITY
 	Has Zone
 	Has affiliation
 	Has life
-	Can die
 CHARACTER
 	Is Entity
 	Has speed
-	Has Entity As target
+	Has strength
 	Can move Itself
-	Can damage Entity
-	Can repair Entity
+	Can damage Entity As attack
+	Can undamage Entity As build
 BUILDING
 	Is Entity
 	Has Zone
+	Has Characters As models
 	Can create Characters
 MAP
 	Has Zones As obstacles or buildings
