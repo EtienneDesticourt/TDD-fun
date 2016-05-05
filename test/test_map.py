@@ -1,4 +1,7 @@
 import unittest
+from app.Map import Map
+from app.Building import Building
+from pygame import Rect as Zone
 
 class MapTestCase(unittest.TestCase):
 
@@ -16,7 +19,8 @@ class MapTestCase(unittest.TestCase):
 
         x, y = 3, 4
 
-        B = Map.createBuilding(name = "Test Model", position = (x, y))
+        B = M.createBuilding(modelName = "Test Model", position = (x, y))
+        assert B != None
         assert B.life == Model.life
         assert B.Zone.x == x
         assert B.Zone.y == y
@@ -34,7 +38,7 @@ class MapTestCase(unittest.TestCase):
         M.BuildingModels["Test Model"] = Model
 
         x, y = 3, 4
-        self.assertRaises(ValueError, M.createBuilding, ["Test Model", (x, y)])
+        self.assertRaises(ValueError, M.createBuilding, "Test Model", (x, y))
 
     def test_map_create_building_failure_wrong_model_name(self):
         M = Map()
@@ -46,4 +50,4 @@ class MapTestCase(unittest.TestCase):
         M.BuildingModels["Test Model"] = Model
 
         x, y = 3, 4
-        self.assertRaises(KeyError, M.createBuilding, ["Invalid Test Model", (x, y)])
+        self.assertRaises(KeyError, M.createBuilding, "Invalid Test Model", (x, y))
