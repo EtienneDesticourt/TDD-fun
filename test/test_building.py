@@ -1,22 +1,21 @@
 import unittest
+from app.Building import Building
+from app.Character import Character
 
 class BuildingTestCase(unittest.TestCase):
 
     def test_building_create_character_success(self):
         B = Building()
+        B.position = (10, 10)
         CharModel = Character()
-        CharModel.speed = 10
         CharModel.strength = 20
         B.CharacterModels["Test Model"] = CharModel
         Char = B.createCharacter("Test Model")
-        assert Char.speed == CharModel.speed
         assert Char.strength == CharModel.strength
-        assert Char.position == Building.position
+        assert Char.position == B.position
 
     def test_building_create_character_failure(self):
         B = Building()
         CharModel = Character()
-        CharModel.speed = 10
-        CharModel.strength = 20
         B.CharacterModels["Test Model"] = CharModel
-        self.assertRaises("KeyError", B.createCharacter, "Other Test Model")
+        self.assertRaises(KeyError, B.createCharacter, "Invalid Test Model")

@@ -4,7 +4,7 @@ class Character(object):
     def __init__(self, position=(0, 0), speed=(0,0), strength=0):
         self.position = position
         self.speed = speed
-        self.strength = 0
+        self.strength = strength
 
     def move(self):
         x, y = self.position
