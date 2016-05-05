@@ -31,6 +31,7 @@ BUILDING
 	Can create Characters
 MAP
 	Has Zones As obstacles or buildings
+	Has Buildings As Models
 	Can create Buildings
 PATH
 	Has coordinates

@@ -19,7 +19,7 @@ class BuildingTestCase(unittest.TestCase):
         assert Char.Zone.height == CharModel.Zone.height
         assert Char.affiliation == CharModel.affiliation
 
-    def test_building_create_character_failure(self):
+    def test_building_create_character_failure_wrong_model_name(self):
         Building1 = Building(life = 10, affiliation = 0, Zone = Zone((0, 0), (1, 1)))
         CharModel = Character(strength = 10, life = 10, affiliation = 0, Zone = None)
         Building1.CharacterModels["Test Model"] = CharModel
