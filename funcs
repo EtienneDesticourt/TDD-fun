@@ -9,46 +9,86 @@
 /Can Use allows the object to use the functionnalities of another object with a wrapper
 /As can be used to describe the role of an owned object
 
-ZONE
+RECT 
 	Has coordinates
 	Has size
 	Can collide with a Zone
+ZONE
+	Is a Rect
+	Can be added to another Zone
 ENTITY
 	Has Zone
 	Has affiliation
 	Has life
+POINT
+	Has coordinates
+PATH
+	Has Points As markers
+	Has widths
+	Can calculate projection of point on path
+ACTION
+	Has name
+	Has Action As next Action
+	Can check if it's been completed
+FLOCKER
+	Has Flockers As Flock
+	Has Zone
+	Can avoid
+	Can align
+	Can cohere
+	Can seek
+	Can queue
+
 CHARACTER
 	Is Entity
+	Is Flocker
 	Has speed
 	Has strength
+	Has position on path
+	Has an Action
 	Can move Itself
 	Can damage Entity As attack
 	Can undamage Entity As build
+	Can aim at position
+	Can follow a Path
 BUILDING
 	Is Entity
 	Has Zone
 	Has Characters As models
 	Can create Characters
 MAP
-	Has Zones As obstacles or buildings
+	Has Zones As obstacles or Buildings
+	Has Zones As Characters
 	Has Buildings As Models
 	Can create Buildings
-PATH
-	Has coordinates
-CONTROLLER
-	Has Map
-	Can Use Maps
-	Can Use Characters
-	Can Use Buildings
+	Can check if a Zone is occupied
+	Can register Buildings
+	Can register Characters
+	Has Maps
+	Has Paths
 	Can create Paths
-PLAYER
-	Has Buildings
+	Can update Paths
+CLOCK
+	Has tick
+	Can increase number of ticks
+WORKER
+	Has Clock
 	Has Characters
-	Can Use Controller As high-level command center
-AI
+	Can make Characters perfom Actions
+CONTROLLER
 	Has Player
-	Can Use Player
+	Has Ai
+	Can check if point is in Entity
+	Can returns all Entities in a Zone
+CAMERA
+	Has coordinates
+	Can convert its coordinates to real world coordinates
+	Can convert real world coordinates to its coordinates
 UI
 	Has Player
 	Can Use Player
-
+FLOCK
+	Has Entities
+SYNCHER
+	Has Entities
+	Can hash Entities

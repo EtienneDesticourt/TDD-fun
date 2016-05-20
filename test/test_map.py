@@ -1,7 +1,7 @@
 import unittest
 from app.Map import Map
 from app.Building import Building
-from pygame import Rect as Zone
+from app.Zone import Zone
 
 class MapTestCase(unittest.TestCase):
 
@@ -20,13 +20,15 @@ class MapTestCase(unittest.TestCase):
         x, y = 3, 4
 
         B = M.createBuilding(modelName = "Test Model", position = (x, y))
+        assert isinstance(B, Building)
         assert B != None
         assert B.life == Model.life
         assert B.Zone.x == x
         assert B.Zone.y == y
-        assert B.Zone.width == Model.Zone.width
-        assert B.Zone.height == Model.Zone.height
+        assert B.Zone.w == Model.Zone.w
+        assert B.Zone.h == Model.Zone.h
         assert B.affiliation == Model.affiliation
+
 
     def test_map_create_building_failure_collision(self):
         M = Map()

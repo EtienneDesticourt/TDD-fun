@@ -11,6 +11,7 @@ class BuildingTestCase(unittest.TestCase):
         Building1.CharacterModels["Test Model"] = CharModel
 
         Char = Building1.createCharacter("Test Model")
+        assert isinstance(Char, Character)
         assert Char             != None
         assert Char.life        == CharModel.life
         assert Char.strength    == CharModel.strength
